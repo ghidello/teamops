@@ -1,7 +1,10 @@
 var builder = DistributedApplication.CreateBuilder(args);
 
-builder.AddProject<Projects.Api>("api");
+var api = builder.AddProject<Projects.Api>("api");
 
-builder.AddProject<Projects.Web_Host>("web");
+builder.AddProject<Projects.Web_Host>("web")
+    .WithExternalHttpEndpoints()
+    .WithReference(api)
+    .WaitFor(api);
 
 builder.Build().Run();

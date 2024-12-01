@@ -1,4 +1,5 @@
 using Web.Client.Pages;
+using Web.Host;
 using Web.Host.Components;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,9 +11,16 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
 
-var app = builder.Build();
+//builder.Services.AddOutputCache();
 
-app.MapDefaultEndpoints();
+builder.Services.AddHttpClient<WeatherApiClient>(client =>
+{
+    // This URL uses "https+http://" to indicate HTTPS is preferred over HTTP.
+    // Learn more about service discovery scheme resolution at https://aka.ms/dotnet/sdschemes.
+    client.BaseAddress = new("https+http://api");
+});
+
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -28,13 +36,16 @@ else
 
 app.UseHttpsRedirection();
 
+app.UseAntiforgery(); 
 
-app.UseAntiforgery();
+app.UseOutputCache(); // View the aspire sample weather forecast endpoint
 
 app.MapStaticAssets();
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
     .AddInteractiveWebAssemblyRenderMode()
     .AddAdditionalAssemblies(typeof(Web.Client._Imports).Assembly);
+
+app.MapDefaultEndpoints();
 
 app.Run();
