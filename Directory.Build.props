@@ -1,0 +1,37 @@
+<Project>
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+
+  <!--  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    
+    <AssemblyName>Sotsera.TeamOps.$(MSBuildProjectName)</AssemblyName>
+    <RootNamespace>Sotsera.TeamOps.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+
+    <Authors>Alessandro Ghidini</Authors>
+    <Company>Sotsera</Company>
+    <Description>Sotsera TeamsOps</Description>
+    <Copyright>Copyright © Alessandro Ghidini</Copyright>
+    <RepositoryUrl>https://github.com/sotsera/sotsera.teamops</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
+
+    <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
+    <MinVerTagPrefix>v</MinVerTagPrefix>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Sotsera.Sources.Common" />
+  </ItemGroup>-->
+
+</Project>
